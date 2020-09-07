@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import AddMembers from './addMembers'
+import AddMembers from './addMembers';
+import './membersList.scss'
 
 class MembersList extends Component {
   // eslint-disable-next-line react/state-in-constructor

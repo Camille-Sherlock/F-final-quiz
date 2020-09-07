@@ -1,0 +1,71 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/state-in-constructor */
+import React, { Component } from 'react';
+
+class AddMembers extends Component {
+  state = {
+    input: false,
+    inputName: '',
+  };
+
+  handleSubmit = (event) => {
+    if (event.keyCode === 13) {
+      // eslint-disable-next-line no-global-assign
+      URL = `http://localhost:8080/addMembers/${this.state.value}`;
+      fetch(URL, {
+        method: 'POST',
+      })
+        .then((Response) => {
+          if (Response.status === 200) {
+            this.props.refresh();
+          } else {
+            Promise.reject();
+          }
+        });
+
+      this.setState({
+        input: false,
+        inputName: '',
+      });
+    }
+  };
+
+  handleClick = () => {
+    this.setState({
+      input: true,
+    });
+  };
+
+  handleChange = () => {
+      this.setState({
+          // eslint-disable-next-line no-restricted-globals
+          inputName: event.target.value,
+      })
+  }
+
+  render() {
+      console.log(this.state.inputName)
+    if (this.state.input) {
+      return (
+        <input className="student-add-input" 
+        name='name'
+        // eslint-disable-next-line no-restricted-globals
+        onKeyDown={() => this.handleSubmit(event)}
+        value={this.state.inputName}
+        onChange={() => this.handleChange()}
+        />
+            
+      );
+    // eslint-disable-next-line no-else-return
+    } else {
+      return (
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+        <p className="student-add" onClick={() => this.handleClick()}>
+          +添加学员
+        </p>
+      );
+    }
+  }
+}
+
+export default AddMembers;

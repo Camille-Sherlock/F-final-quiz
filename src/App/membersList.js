@@ -47,7 +47,6 @@ class MembersList extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="student-list">
         <h2>学员列表</h2>

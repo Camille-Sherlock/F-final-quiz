@@ -27,7 +27,6 @@ class MembersGroup extends Component {
   };
 
    render() {
-       console.log(this.state.data)
     return (
       <div className="students-group">
         <div className="group-header">

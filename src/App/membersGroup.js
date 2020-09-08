@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import '../style/studentsGroup.scss';
-// import EditableTeamName from './EditableTeamName'
+import EditableTeamName from './editableTeamName'
+import './membersGroup.scss'
 
 class MembersGroup extends Component {
   state = {
@@ -13,7 +13,7 @@ class MembersGroup extends Component {
       method: 'GET',
     })
       .then((Response) => {
-        if (Response.status === 200) {
+        if (Response.ok){
           return Response.json();
         } else {
           Promise.reject();
@@ -38,10 +38,9 @@ class MembersGroup extends Component {
         </div>
         {Object.keys(this.state.data).map((key) => (
           <div className="group" key={key}>
-            {/* <EditableTeamName 
+              <EditableTeamName
               teamName={this.state.data[key].groupName}
-            /> */}
-
+              />
             <div className="students-group-content">
               {Object.keys(this.state.data[key].students).map((childrenKey) => (
                 <p

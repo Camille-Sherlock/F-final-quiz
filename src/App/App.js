@@ -8,8 +8,8 @@ class App extends Component {
     return (
       <div data-testid="app" className="App">
         <body>
+        <MembersGroup/>
           <MemberList />
-          <MembersGroup/>
         </body>
       </div>
     );

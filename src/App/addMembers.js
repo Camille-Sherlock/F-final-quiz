@@ -6,17 +6,19 @@ class AddMembers extends Component {
   state = {
     input: false,
     inputName: '',
+    enterKey: 13,
   };
 
   handleSubmit = (event) => {
-    if (event.keyCode === 13) {
+    
+    if (event.keyCode === this.state.enterKey) {
       // eslint-disable-next-line no-global-assign
-      URL = `http://localhost:8080/addMembers/${this.state.value}`;
+      URL = `http://localhost:8080/addMembers/${this.state.inputName}`;
       fetch(URL, {
         method: 'POST',
       })
         .then((Response) => {
-          if (Response.status === 200) {
+          if (Response.ok) {
             this.props.refresh();
           } else {
             Promise.reject();

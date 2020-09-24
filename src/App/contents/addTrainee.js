@@ -2,7 +2,7 @@
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 
-class AddMembers extends Component {
+class AddTrainee extends Component {
   state = {
     input: false,
     inputName: '',
@@ -10,20 +10,18 @@ class AddMembers extends Component {
   };
 
   handleSubmit = (event) => {
-    
     if (event.keyCode === this.state.enterKey) {
       // eslint-disable-next-line no-global-assign
       URL = `http://localhost:8080/addMembers/${this.state.inputName}`;
       fetch(URL, {
         method: 'POST',
-      })
-        .then((Response) => {
-          if (Response.ok) {
-            this.props.refresh();
-          } else {
-            Promise.reject();
-          }
-        });
+      }).then((Response) => {
+        if (Response.ok) {
+          this.props.refresh();
+        } else {
+          Promise.reject();
+        }
+      });
 
       this.setState({
         input: false,
@@ -39,26 +37,26 @@ class AddMembers extends Component {
   };
 
   handleChange = () => {
-      this.setState({
-          // eslint-disable-next-line no-restricted-globals
-          inputName: event.target.value,
-      })
-  }
+    this.setState({
+      // eslint-disable-next-line no-restricted-globals
+      inputName: event.target.value,
+    });
+  };
 
   render() {
-      console.log(this.state.inputName)
+    console.log(this.state.inputName);
     if (this.state.input) {
       return (
-        <input className="student-add-input" 
-        name='name'
-        // eslint-disable-next-line no-restricted-globals
-        onKeyDown={() => this.handleSubmit(event)}
-        value={this.state.inputName}
-        onChange={() => this.handleChange()}
+        <input
+          className="student-add-input"
+          name="name"
+          // eslint-disable-next-line no-restricted-globals
+          onKeyDown={() => this.handleSubmit(event)}
+          value={this.state.inputName}
+          onChange={() => this.handleChange()}
         />
-            
       );
-    // eslint-disable-next-line no-else-return
+      // eslint-disable-next-line no-else-return
     } else {
       return (
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
@@ -70,4 +68,4 @@ class AddMembers extends Component {
   }
 }
 
-export default AddMembers;
+export default AddTrainee;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AddMembers from './addMembers';
-import './membersList.scss'
+import AddTrainee from './addTrainee';
+import '../../style/membersList.scss';
 
-class MembersList extends Component {
+class TraineeList extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     data: [],
@@ -31,7 +31,7 @@ class MembersList extends Component {
     fetch('http://localhost:8080/members')
       // eslint-disable-next-line consistent-return
       .then((data) => {
-        if (data.status === 200) {
+        if (data.status.ok) {
           return data.json();
         }
       })
@@ -44,7 +44,7 @@ class MembersList extends Component {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   render() {
     return (
@@ -56,12 +56,10 @@ class MembersList extends Component {
               {`${this.state.data[key].id}. ${this.state.data[key].name}`}
             </p>
           ))}
-          <AddMembers
-          refresh={() => this.handleGetMembers()}
-          />
+          <AddTrainee refresh={() => this.handleGetMembers()} />
         </div>
       </div>
     );
   }
 }
-export default MembersList;
+export default TraineeList;

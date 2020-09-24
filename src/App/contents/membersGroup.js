@@ -1,6 +1,10 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-else-return */
+/* eslint-disable consistent-return */
+/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
-import EditableTeamName from './editableTeamName'
-import './membersGroup.scss'
+import EditableTeamName from './editableTeamName';
+import '../../style/membersGroup.scss';
 
 class MembersGroup extends Component {
   state = {
@@ -8,12 +12,12 @@ class MembersGroup extends Component {
   };
 
   handleClick = () => {
-    URL = 'http://localhost:8080/membersGroup';
+    const URL = 'http://localhost:8080/membersGroup';
     fetch(URL, {
       method: 'GET',
     })
       .then((Response) => {
-        if (Response.ok){
+        if (Response.ok) {
           return Response.json();
         } else {
           Promise.reject();
@@ -26,7 +30,7 @@ class MembersGroup extends Component {
       });
   };
 
-   render() {
+  render() {
     return (
       <div className="students-group">
         <div className="group-header">
@@ -37,9 +41,7 @@ class MembersGroup extends Component {
         </div>
         {Object.keys(this.state.data).map((key) => (
           <div className="group" key={key}>
-              <EditableTeamName
-              teamName={this.state.data[key].groupName}
-              />
+            <EditableTeamName teamName={this.state.data[key].groupName} />
             <div className="students-group-content">
               {Object.keys(this.state.data[key].students).map((childrenKey) => (
                 <p

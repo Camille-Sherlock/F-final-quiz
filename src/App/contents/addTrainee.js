@@ -2,10 +2,12 @@
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 
+// TODO eslint-disable 比较滥用
 class AddTrainee extends Component {
   state = {
     input: false,
     inputName: '',
+    // TODO 固定值内容不要声明在state内
     enterKey: 13,
   };
 
@@ -19,6 +21,7 @@ class AddTrainee extends Component {
         if (Response.ok) {
           this.props.refresh();
         } else {
+          // TODO fetch里面不是这么用的
           Promise.reject();
         }
       });
@@ -50,6 +53,7 @@ class AddTrainee extends Component {
         <input
           className="student-add-input"
           name="name"
+          // TODO 里面不用再写成箭头函数了
           // eslint-disable-next-line no-restricted-globals
           onKeyDown={() => this.handleSubmit(event)}
           value={this.state.inputName}

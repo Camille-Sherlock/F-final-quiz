@@ -8,6 +8,7 @@ import '../../style/membersGroup.scss';
 
 class MembersGroup extends Component {
   state = {
+    // TODO 这里默认是数组吧
     data: {},
   };
 
@@ -39,6 +40,7 @@ class MembersGroup extends Component {
             分组学员
           </button>
         </div>
+        {/* TODO data 数组直接map就可以了， Object.keys不是这么用的 */}
         {Object.keys(this.state.data).map((key) => (
           <div className="group" key={key}>
             <EditableTeamName teamName={this.state.data[key].groupName} />

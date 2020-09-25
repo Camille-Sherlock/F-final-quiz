@@ -47,10 +47,12 @@ class EditableTeamName extends Component {
   };
 
   render() {
+    // TODO 采用三元运算符优化
     if (this.state.input) {
       return (
         <input
           className="team-name-input"
+          // TODO 里面不用使用箭头函数
           onKeyDown={() => this.handleSubmit}
           value={this.state.teamName}
           onChange={() => this.handleChange()}

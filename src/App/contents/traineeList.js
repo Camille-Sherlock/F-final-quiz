@@ -51,6 +51,7 @@ class TraineeList extends Component {
       <div className="student-list">
         <h2>学员列表</h2>
         <div className="students-list-content">
+          {/* TODO 直接使用map */}
           {Object.keys(this.state.data).map((key) => (
             <p className="student" key={key}>
               {`${this.state.data[key].id}. ${this.state.data[key].name}`}

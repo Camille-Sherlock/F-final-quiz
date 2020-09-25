@@ -2,6 +2,8 @@
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 
+// TODO 实现内容与 addTrainee 重复度过高 可以思考提取抽象复用
+// TODO 其他问题同 addTrainee
 class AddTrainer extends Component {
   state = {
     input: false,
